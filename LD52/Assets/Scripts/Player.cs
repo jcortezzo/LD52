@@ -10,12 +10,20 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float jumpForce;
+    [SerializeField]
+    private float maxSpeed;
 
     // TODO: Set PLANET_GENERATOR based on distance from/force on player
     [SerializeField]
-    private GameObject PLANET_GENERATOR;
+    private GameObject planetGenerator;
 
     private Rigidbody2D rb;
+
+    public Vector2 CoreToPlayer {
+        get {
+            return (this.transform.position - planetGenerator.transform.position).normalized;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,18 +34,34 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 coreToPlayer = (this.transform.position - PLANET_GENERATOR.transform.position).normalized;
-        this.transform.up = coreToPlayer;
-        float input = Input.GetAxisRaw("Horizontal");
-        rb.velocity = this.transform.right * speed * input;
-        if (Input.GetKeyDown(KeyCode.Space)) Jump(coreToPlayer);
+        Move();
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Jump();
+        }
     }
 
-    private void Jump(Vector2 coreToPlayer)
+    private void Move() {
+        this.transform.up = CoreToPlayer * this.transform.up.magnitude;
+        float dir = Input.GetAxisRaw("Horizontal");
+
+        // Keep original Y velocity
+        Vector2 currentVelocityWorldSpace = rb.velocity;
+        Vector2 currentVelocityLocalSpace = transform.InverseTransformDirection(currentVelocityWorldSpace);
+
+        // Take suggested X velocity
+        Vector2 suggestedMovementWorldSpace = this.transform.right * speed * dir;
+        Vector2 suggestedMovementLocalSpace = transform.InverseTransformDirection(suggestedMovementWorldSpace);
+
+        suggestedMovementLocalSpace = new Vector2(suggestedMovementLocalSpace.x, currentVelocityLocalSpace.y);
+        Vector2 finalMovementWorldSpace = transform.TransformDirection(suggestedMovementLocalSpace);
+        rb.velocity = finalMovementWorldSpace;
+    }
+
+    private void Jump()
     {
-        Vector2 forceVector = coreToPlayer * jumpForce;
-        rb.AddForce(forceVector, ForceMode2D.Impulse);
-        Debug.Log
-            ($"Jump force vector {forceVector} applied to rigid body with vector {coreToPlayer}");
+        rb.AddForce(CoreToPlayer * jumpForce, ForceMode2D.Impulse);
+        // Debug.Log(
+        //     $"Jump w/ Vector {CoreToPlayer}"
+        // );
     }
 }

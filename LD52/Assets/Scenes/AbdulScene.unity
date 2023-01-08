@@ -403,9 +403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2b7f9c44b5b45449c1c9b32f73a006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 500
-  PLANET_GENERATOR: {fileID: 1879465781}
+  speed: 25
+  jumpForce: 20
+  maxSpeed: 25
+  planetGenerator: {fileID: 1879465781}
 --- !u!58 &2093415652
 CircleCollider2D:
   m_ObjectHideFlags: 0

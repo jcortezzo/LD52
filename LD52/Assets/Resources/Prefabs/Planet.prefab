@@ -10,8 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4817919393784804342}
   - component: {fileID: 4817919393784804345}
+  - component: {fileID: 536683158}
+  - component: {fileID: 536683157}
+  - component: {fileID: 536683161}
   m_Layer: 0
-  m_Name: PlanetGenerator
+  m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +48,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GROUND_TILE_PREFAB: {fileID: 2524397035936449533, guid: ee6eafa7fe9613c44b64cf171d3e47ed, type: 3}
-  RADIUS: 0
-  NUM_SPOKES: 0
-  NUM_LAYERS: 0
+  <Radius>k__BackingField: 10
+  NUM_SPOKES: 64
+  NUM_LAYERS: 18
+--- !u!58 &536683158
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817919393784804344}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10
+--- !u!250 &536683157
+PointEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817919393784804344}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceMagnitude: -25
+  m_ForceVariation: 0
+  m_DistanceScale: 1
+  m_ForceSource: 0
+  m_ForceTarget: 0
+  m_ForceMode: 0
+  m_Drag: 0
+  m_AngularDrag: 0
+--- !u!114 &536683161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817919393784804344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b132100f901114d8314ebc808f95fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,9 +7,8 @@ public class PlanetGenerator : MonoBehaviour
     [SerializeField]
     private GameObject GROUND_TILE_PREFAB;
 
-    [Header("Planet Dimensions")]
-    [SerializeField]
-    private float RADIUS;
+    [field:SerializeField]
+    public float Radius { get; private set; }
     [SerializeField]
     private int NUM_SPOKES;
     [SerializeField]
@@ -28,7 +27,7 @@ public class PlanetGenerator : MonoBehaviour
         }
         for (int layer = 0; layer < NUM_LAYERS; layer++)
         {
-            float currRadius = (RADIUS / NUM_LAYERS) * layer;
+            float currRadius = (Radius / NUM_LAYERS) * layer;
             for (int spoke = 0; spoke < NUM_SPOKES; spoke++)
             {
                 float theta = (DEGREES_IN_PLANET / NUM_SPOKES) * spoke;

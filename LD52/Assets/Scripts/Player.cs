@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float maxSpeed;
 
-    // TODO: Set PLANET_GENERATOR based on distance from/force on player
+    // TODO: Set planetGenerator based on distance from/force on player
     [SerializeField]
     private GameObject planetGenerator;
 
@@ -60,8 +60,5 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(CoreToPlayer * jumpForce, ForceMode2D.Impulse);
-        // Debug.Log(
-        //     $"Jump w/ Vector {CoreToPlayer}"
-        // );
     }
 }

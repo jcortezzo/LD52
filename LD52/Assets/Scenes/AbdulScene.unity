@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 5
+  jumpForce: 10
   maxSpeed: 10
   planetGenerator: {fileID: 1879465781}
 --- !u!58 &2093415652

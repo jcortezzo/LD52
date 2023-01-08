@@ -5,19 +5,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
-
-    [SerializeField]
-    private float jumpForce;
-    [SerializeField]
-    private float maxSpeed;
 
     // TODO: Set planetGenerator based on distance from/force on player
     [SerializeField]
     private GameObject planetGenerator;
 
     private Rigidbody2D rb;
+
+    [Header("Prefabs")]
+    [SerializeField]
+    private GameObject laserPrefab;
+
+    [Header("Player Settings")]
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float jumpForce;
+    [SerializeField]
+    private float maxSpeed;
+    [SerializeField]
+    private float laserDuration;
+    [SerializeField]
+    private float laserLength;
 
     public Vector2 CoreToPlayer {
         get {
@@ -36,7 +45,8 @@ public class Player : MonoBehaviour
     {
         Move();
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Jump();
+            //Jump();
+            ShootLaser();
         }
     }
 
@@ -60,5 +70,12 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(CoreToPlayer * jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void ShootLaser()
+    {
+        Laser l = Instantiate(laserPrefab, this.transform.position, this.transform.rotation).GetComponent<Laser>();
+        l.Shoot(laserDuration, laserLength, -CoreToPlayer);
+        Jump();
     }
 }

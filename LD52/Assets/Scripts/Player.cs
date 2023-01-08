@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private void Jump(Vector2 coreToPlayer)
     {
         Vector2 forceVector = coreToPlayer * jumpForce;
-        rb.AddForce(coreToPlayer, ForceMode2D.Impulse);
+        rb.AddForce(forceVector, ForceMode2D.Impulse);
         Debug.Log
             ($"Jump force vector {forceVector} applied to rigid body with vector {coreToPlayer}");
     }

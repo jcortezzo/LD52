@@ -116,7 +116,6 @@ public class Laser : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"Laser collision with {collision.gameObject}!");
         if (collision != null && collision.CompareTag("Ground"))
         {
             Destroy(collision.gameObject);

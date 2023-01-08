@@ -248,6 +248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 536683157, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 4817919393784804342, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -484,6 +488,14 @@ PrefabInstance:
     - target: {fileID: 30236412634346826, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 30236412634346827, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
+      propertyPath: laserLength
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 30236412634346827, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
+      propertyPath: laserDuration
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 30236412634346827, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
       propertyPath: planetGenerator

@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     private float jumpForce;
     [SerializeField]
     private float maxSpeed;
+    [SerializeField]
+    private float laserDuration;
+    [SerializeField]
+    private float laserLength;
 
     public Vector2 CoreToPlayer {
         get {
@@ -70,8 +74,8 @@ public class Player : MonoBehaviour
 
     private void ShootLaser()
     {
-        Laser l = Instantiate(laserPrefab, this.transform.position, Quaternion.identity).GetComponent<Laser>();
-        l.Shoot(0.5f, 20f, -CoreToPlayer);
+        Laser l = Instantiate(laserPrefab, this.transform.position, this.transform.rotation).GetComponent<Laser>();
+        l.Shoot(laserDuration, laserLength, -CoreToPlayer);
         Jump();
     }
 }

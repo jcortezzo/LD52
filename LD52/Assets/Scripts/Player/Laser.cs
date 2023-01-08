@@ -11,8 +11,8 @@ public class Laser : MonoBehaviour
     private List<Vector2> colliderPoints;
     private PolygonCollider2D pc2d;
 
-    public Vector2 StartPosition { get { return nodes[0].position; } }
-    public Vector2 EndPosition { 
+    public Vector2 StartPosition { get { return nodes[0].position; } }  // world space
+    public Vector2 EndPosition {  // world space
         get 
         { 
             return nodes[1].position; 
@@ -22,17 +22,25 @@ public class Laser : MonoBehaviour
             nodes[1].position = value; 
         } 
     }
+    public Transform StartPositionTransform { get { return nodes[0]; } }
+    public Transform EndPositionTransform { get { return nodes[1]; } }
 
     private Coroutine shootCoroutine;
 
     void Awake()
     {
-        GameObject endObject = new GameObject();
+        GameObject endObject = new GameObject("LaserEnd");
+        endObject.transform.position = transform.position;
+        endObject.transform.rotation = transform.rotation;
         endObject.transform.parent = this.transform;
         this.nodes = new List<Transform>() {
             this.transform,
             endObject.transform,
         };
+
+        pc2d = GetComponent<PolygonCollider2D>();
+        pc2d.isTrigger = true;
+        pc2d.enabled = false;
     }
 
     // Start is called before the first frame update
@@ -40,8 +48,6 @@ public class Laser : MonoBehaviour
     {
         this.lr = GetComponent<LineRenderer>();
         lr.positionCount = nodes.Count;
-        pc2d = GetComponent<PolygonCollider2D>();
-        pc2d.isTrigger = true;
 	}
 
 	// Update is called once per frame
@@ -62,9 +68,12 @@ public class Laser : MonoBehaviour
 
     private IEnumerator ShootCoroutine(float duration, float length, Vector2 direction)
     {
-        for (float t = 0f; t < duration; t += Time.deltaTime / duration)
+        pc2d.enabled = true;
+        for (float t = 0.001f; t < 1f; t += Time.deltaTime / duration)
         {
-            EndPosition = (length / duration) * t * direction;
+            Vector2 startPositionLocalSpace = StartPositionTransform.InverseTransformPoint(StartPosition);
+            Vector2 endPositionLocalSpace = new Vector2(startPositionLocalSpace.x, startPositionLocalSpace.y - length / duration * t);
+            EndPosition = EndPositionTransform.TransformPoint(endPositionLocalSpace);
             yield return null;
         }
         Destroy(this.gameObject, 0.01f);  // jank
@@ -103,5 +112,14 @@ public class Laser : MonoBehaviour
         Vector3[] positions = new Vector3[lr.positionCount];
         lr.GetPositions(positions);
         return positions;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log($"Laser collision with {collision.gameObject}!");
+        if (collision != null && collision.CompareTag("Ground"))
+        {
+            Destroy(collision.gameObject);
+        }    
     }
 }

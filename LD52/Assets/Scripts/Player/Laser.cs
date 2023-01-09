@@ -99,7 +99,7 @@ public class Laser : MonoBehaviour
         Vector3[] offsets = new Vector3[2];
         offsets[0] = new Vector3(-deltaX, deltaY);
         offsets[1] = new Vector3(deltaX, -deltaY);
-        Debug.Log($"{deltaX} Xoff:{offsets[0]}, {deltaY} Yoff:{offsets[1]} ");
+
         // Generate the Colliders Vertices
         List<Vector2> colliderPositions = new List<Vector2> {
             positions[0] + offsets[0],

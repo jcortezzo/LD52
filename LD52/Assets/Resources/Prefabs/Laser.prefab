@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4433101615572420649}
   - component: {fileID: 4433101615572420650}
-  - component: {fileID: 4433101615572420651}
-  - component: {fileID: 4433101615572420644}
+  - component: {fileID: 1699946954584603024}
+  - component: {fileID: 2635891192678107515}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -80,7 +80,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -133,7 +133,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!60 &4433101615572420651
+--- !u!60 &1699946954584603024
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,12 +158,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.8974495, y: -3.1178052}
-      - {x: 1.4219213, y: -3.4632967}
-      - {x: 1.6035569, y: -4.0223136}
-      - {x: 2.191342, y: -4.0223136}
-      - {x: 2.3729777, y: -3.4632967}
---- !u!114 &4433101615572420644
+    - - {x: 0, y: 0.5}
+      - {x: -0.47552827, y: 0.15450849}
+      - {x: -0.2938926, y: -0.40450853}
+      - {x: 0.29389268, y: -0.40450847}
+      - {x: 0.47552824, y: 0.15450856}
+--- !u!114 &2635891192678107515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

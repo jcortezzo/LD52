@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private Animator animator;
+
     [Header("Prefabs")]
     [SerializeField]
     private GameObject laserPrefab;
@@ -28,6 +30,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float laserLength;
 
+    [Header("Animation Settings")]
+    [SerializeField]
+    private float animationSpeed;
+
     public Vector2 CoreToPlayer {
         get {
             return (this.transform.position - planetGenerator.transform.position).normalized;
@@ -38,6 +44,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        // Default playback speed is 1, which is too fast for the idle animation
+        animator.speed = animationSpeed;
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(LineRenderer), typeof(PolygonCollider2D))]
 
@@ -65,20 +66,27 @@ public class Laser : MonoBehaviour
     {
         shootCoroutine = StartCoroutine(ShootCoroutine(duration, length, direction.normalized));
     }
-
+    Vector2 startPositionLocalSpace;
+    Vector2 endPositionLocalSpace;
     private IEnumerator ShootCoroutine(float duration, float length, Vector2 direction)
     {
         pc2d.enabled = true;
         for (float t = 0.001f; t < 1f; t += Time.deltaTime / duration)
         {
-            Vector2 startPositionLocalSpace = StartPositionTransform.InverseTransformPoint(StartPosition);
-            Vector2 endPositionLocalSpace = new Vector2(startPositionLocalSpace.x, startPositionLocalSpace.y - length / duration * t);
+            startPositionLocalSpace = StartPositionTransform.InverseTransformPoint(StartPosition);
+            endPositionLocalSpace = new Vector2(startPositionLocalSpace.x, startPositionLocalSpace.y - (length / duration * t));
             EndPosition = EndPositionTransform.TransformPoint(endPositionLocalSpace);
+
             yield return null;
         }
         Destroy(this.gameObject, 0.01f);  // jank
     }
 
+    private void OnDrawGizmos()
+    {
+        //Gizmos.DrawCube(StartPositionTransform.TransformPoint(startPositionLocalSpace), Vector3.one);
+        //Gizmos.DrawCube(StartPositionTransform.TransformPoint(endPositionLocalSpace), Vector3.one);
+    }
     private List<Vector2> CalculateColliderPoints()
     {
         // Get All positions on the line renderer
@@ -88,7 +96,8 @@ public class Laser : MonoBehaviour
         float width = lr.startWidth;
 
         // m = (y2 - y1) / (x2 - x1)
-        float m = (positions[1].y - positions[0].y) / (positions[1].x - positions[0].x);
+        float deltax = (positions[1].x - positions[0].x) == 0 ? 1 : (positions[1].x - positions[0].x);
+        float m = (positions[1].y - positions[0].y) / deltax;//;(positions[1].x - positions[0].x);
         float deltaX = (width / 2f) * (m / Mathf.Pow(m * m + 1, 0.5f));
         float deltaY = (width / 2f) * (1 / Mathf.Pow(1 + m * m, 0.5f));
 
@@ -96,7 +105,7 @@ public class Laser : MonoBehaviour
         Vector3[] offsets = new Vector3[2];
         offsets[0] = new Vector3(-deltaX, deltaY);
         offsets[1] = new Vector3(deltaX, -deltaY);
-
+        Debug.Log($"{deltaX} Xoff:{offsets[0]}, {deltaY} Yoff:{offsets[1]} ");
         // Generate the Colliders Vertices
         List<Vector2> colliderPositions = new List<Vector2> {
             positions[0] + offsets[0],
@@ -119,6 +128,6 @@ public class Laser : MonoBehaviour
         if (collision != null && collision.CompareTag("Ground"))
         {
             Destroy(collision.gameObject);
-        }    
+        }
     }
 }

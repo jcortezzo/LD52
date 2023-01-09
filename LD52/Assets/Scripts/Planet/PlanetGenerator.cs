@@ -17,6 +17,9 @@ public class PlanetGenerator : MonoBehaviour
     private Stack<GameObject>[] stackList;
     private float DEGREES_IN_PLANET = 360f;
 
+    [SerializeField]
+    private List<Sprite> sprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +40,46 @@ public class PlanetGenerator : MonoBehaviour
 
                 Vector2 worldPos = new Vector2(x, y);
 
+                Vector2 direction = (worldPos - (Vector2) this.transform.position).normalized; 
+
                 GameObject groundTile = Instantiate(GROUND_TILE_PREFAB, worldPos, Quaternion.identity, this.transform);
+                groundTile.transform.up = direction;
+                Sprite planetSprite = GetPlanetSprite(layer + 1);
+                groundTile.GetComponent<SpriteRenderer>().sprite = planetSprite;
                 stackList[spoke].Push(groundTile);
             }
+        }
+    }
+
+    private Sprite GetPlanetSprite(int currLayer)
+    {
+        double layerRatio = ((double) currLayer / (double) NUM_LAYERS);
+        Debug.Log($"{layerRatio} with layer {currLayer}");
+        if (layerRatio == 1.0)
+        {
+            return sprites[0];
+        } 
+        else if (layerRatio >= 0.90) 
+        {
+            return sprites[1];
+        } 
+        else if (layerRatio >= 0.80)
+        {
+            return sprites[2];
+        } 
+        else if (layerRatio >= 0.60)
+        {
+            return sprites[3];
+        } else if (layerRatio >= 0.3)
+        {
+            return sprites[4];
+        } else if (layerRatio >= 0.2)
+        {
+            return sprites[5];
+        }
+        else
+        {
+            return sprites[6];
         }
     }
 

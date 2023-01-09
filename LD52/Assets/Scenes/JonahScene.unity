@@ -326,6 +326,78 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet
       objectReference: {fileID: 0}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: NUM_LAYERS
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: NUM_SPOKES
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1585b299bbdbaab4ab320bc1d28e44ff, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: f35e8f6e32a5d294d8057cc802d7f9ed, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 55382a940e6e76b42bb0fc48448ec89d, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: b3a7085ae095085448f959b902fafe9f, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: d44d946a35827c042b33df6bf786e6b2, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: e9eede07fb0abd843885966d9e827448, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: sprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: fd1561b351434fc488cd30fcd3a382d0, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 1585b299bbdbaab4ab320bc1d28e44ff, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: f35e8f6e32a5d294d8057cc802d7f9ed, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.data[2]
+      value: 
+      objectReference: {fileID: 2800000, guid: 55382a940e6e76b42bb0fc48448ec89d, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.data[3]
+      value: 
+      objectReference: {fileID: 2800000, guid: b3a7085ae095085448f959b902fafe9f, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.data[4]
+      value: 
+      objectReference: {fileID: 2800000, guid: d44d946a35827c042b33df6bf786e6b2, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.data[5]
+      value: 
+      objectReference: {fileID: 2800000, guid: e9eede07fb0abd843885966d9e827448, type: 3}
+    - target: {fileID: 4817919393784804345, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
+      propertyPath: textures.Array.data[6]
+      value: 
+      objectReference: {fileID: 2800000, guid: fd1561b351434fc488cd30fcd3a382d0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
 --- !u!1 &536683156 stripped

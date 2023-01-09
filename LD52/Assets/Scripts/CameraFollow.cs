@@ -17,6 +17,14 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
+    private Vector3 PlayerPosLocal
+    {
+        get
+        {
+            return player.transform.InverseTransformPoint(PlayerPos);
+        }
+    }
+
     private Quaternion PlayerRotation
     {
         get
@@ -24,6 +32,9 @@ public class CameraFollow : MonoBehaviour
             return player.transform.rotation;
         }
     }
+
+    [SerializeField]
+    float offset;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +44,9 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = PlayerPos;
+        Vector3 localPos = new Vector3(PlayerPosLocal.x, PlayerPosLocal.y - offset, PlayerPosLocal.z);
+        Vector3 worldPos = player.transform.TransformPoint(localPos);
+        transform.position = new Vector3(worldPos.x, worldPos.y, transform.position.z);
         transform.rotation = PlayerRotation;
     }
 }

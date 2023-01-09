@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(LineRenderer), typeof(PolygonCollider2D))]
 
@@ -72,8 +73,9 @@ public class Laser : MonoBehaviour
         for (float t = 0.001f; t < 1f; t += Time.deltaTime / duration)
         {
             Vector2 startPositionLocalSpace = StartPositionTransform.InverseTransformPoint(StartPosition);
-            Vector2 endPositionLocalSpace = new Vector2(startPositionLocalSpace.x, startPositionLocalSpace.y - length / duration * t);
+            Vector2 endPositionLocalSpace = new Vector2(startPositionLocalSpace.x, startPositionLocalSpace.y - (length / duration * t));
             EndPosition = EndPositionTransform.TransformPoint(endPositionLocalSpace);
+
             yield return null;
         }
         Destroy(this.gameObject, 0.01f);  // jank
@@ -88,7 +90,8 @@ public class Laser : MonoBehaviour
         float width = lr.startWidth;
 
         // m = (y2 - y1) / (x2 - x1)
-        float m = (positions[1].y - positions[0].y) / (positions[1].x - positions[0].x);
+        float deltax = (positions[1].x - positions[0].x) == 0 ? 1 : (positions[1].x - positions[0].x);
+        float m = (positions[1].y - positions[0].y) / deltax;//;(positions[1].x - positions[0].x);
         float deltaX = (width / 2f) * (m / Mathf.Pow(m * m + 1, 0.5f));
         float deltaY = (width / 2f) * (1 / Mathf.Pow(1 + m * m, 0.5f));
 
@@ -119,6 +122,6 @@ public class Laser : MonoBehaviour
         if (collision != null && collision.CompareTag("Ground"))
         {
             Destroy(collision.gameObject);
-        }    
+        }
     }
 }

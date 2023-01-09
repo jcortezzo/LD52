@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4433101615572420650}
   - component: {fileID: 4433101615572420651}
   - component: {fileID: 4433101615572420644}
+  - component: {fileID: 1972558945693841846}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -177,3 +178,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreCounter: {fileID: 11400000, guid: 0fd122b760c7f924e80bbe4c98238beb, type: 2}
   PARTICLE_EFFECT: {fileID: 5273314967961677631, guid: 51ae3293771a5f142abf851926c23382, type: 3}
+  width: 1
+--- !u!50 &1972558945693841846
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4433101615572420645}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

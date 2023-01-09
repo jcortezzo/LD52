@@ -16,6 +16,9 @@ public class Laser : MonoBehaviour
     [SerializeField]
     private GameObject PARTICLE_EFFECT;
 
+    [SerializeField]
+    private float width;
+
 
     public Vector2 StartPosition { get { return nodes[0].position; } }  // world space
     public Vector2 EndPosition {  // world space
@@ -54,6 +57,7 @@ public class Laser : MonoBehaviour
     {
         this.lr = GetComponent<LineRenderer>();
         lr.positionCount = nodes.Count;
+        lr.startWidth = this.width;
 	}
 
 	// Update is called once per frame

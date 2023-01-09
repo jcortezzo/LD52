@@ -66,15 +66,14 @@ public class Laser : MonoBehaviour
     {
         shootCoroutine = StartCoroutine(ShootCoroutine(duration, length, direction.normalized));
     }
-    Vector2 startPositionLocalSpace;
-    Vector2 endPositionLocalSpace;
+
     private IEnumerator ShootCoroutine(float duration, float length, Vector2 direction)
     {
         pc2d.enabled = true;
         for (float t = 0.001f; t < 1f; t += Time.deltaTime / duration)
         {
-            startPositionLocalSpace = StartPositionTransform.InverseTransformPoint(StartPosition);
-            endPositionLocalSpace = new Vector2(startPositionLocalSpace.x, startPositionLocalSpace.y - (length / duration * t));
+            Vector2 startPositionLocalSpace = StartPositionTransform.InverseTransformPoint(StartPosition);
+            Vector2 endPositionLocalSpace = new Vector2(startPositionLocalSpace.x, startPositionLocalSpace.y - (length / duration * t));
             EndPosition = EndPositionTransform.TransformPoint(endPositionLocalSpace);
 
             yield return null;
@@ -82,11 +81,6 @@ public class Laser : MonoBehaviour
         Destroy(this.gameObject, 0.01f);  // jank
     }
 
-    private void OnDrawGizmos()
-    {
-        //Gizmos.DrawCube(StartPositionTransform.TransformPoint(startPositionLocalSpace), Vector3.one);
-        //Gizmos.DrawCube(StartPositionTransform.TransformPoint(endPositionLocalSpace), Vector3.one);
-    }
     private List<Vector2> CalculateColliderPoints()
     {
         // Get All positions on the line renderer

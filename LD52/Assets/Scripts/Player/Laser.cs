@@ -10,6 +10,12 @@ public class Laser : MonoBehaviour
     private List<Transform> nodes;
     private List<Vector2> colliderPoints;
     private PolygonCollider2D pc2d;
+    [SerializeField]
+    private FloatSO scoreCounter;
+
+    [SerializeField]
+    private GameObject PARTICLE_EFFECT;
+
 
     public Vector2 StartPosition { get { return nodes[0].position; } }  // world space
     public Vector2 EndPosition {  // world space
@@ -118,7 +124,11 @@ public class Laser : MonoBehaviour
     {
         if (collision != null && collision.CompareTag("Ground"))
         {
+            Vector3 blockPosition = collision.gameObject.GetComponent<Transform>().position;
+            GameObject explosion = Instantiate(PARTICLE_EFFECT, blockPosition, new Quaternion(0, 0, 0, 0));
             Destroy(collision.gameObject);
+            Destroy(explosion, 0.3f);
+            scoreCounter.value++;
         }    
     }
 }

@@ -24,6 +24,10 @@ public class CameraFollow : MonoBehaviour
             return player.transform.rotation;
         }
     }
+    [SerializeField]
+    private Vector3 offset;
+    [SerializeField]
+    private float smoothSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +37,15 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = PlayerPos;
+        SmoothFollow();
         transform.rotation = PlayerRotation;
+    }
+
+    void SmoothFollow()
+    {
+        Vector3 targetPos = player.transform.position + offset;
+        Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
+        smoothFollow.z = -10;
+        transform.position = smoothFollow;
     }
 }

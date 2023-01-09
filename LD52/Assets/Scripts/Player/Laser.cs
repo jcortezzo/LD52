@@ -119,7 +119,10 @@ public class Laser : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null && collision.CompareTag("Ground"))
+        // Null check on Ground in case of other GamObject collisions in future
+        if (collision != null && 
+            collision.gameObject.GetComponent<Ground>() != null && 
+            collision.gameObject.GetComponent<Ground>() == true)
         {
             Destroy(collision.gameObject);
         }

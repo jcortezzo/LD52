@@ -36,8 +36,8 @@ public class PlanetGenerator : MonoBehaviour
                 float y = Mathf.Sin(theta) * currRadius;
 
                 Vector2 worldPos = new Vector2(x, y);
-
-                GameObject groundTile = Instantiate(GROUND_TILE_PREFAB, worldPos, Quaternion.identity, this.transform);
+                Vector2 position = worldPos + (Vector2)transform.position;
+                GameObject groundTile = Instantiate(GROUND_TILE_PREFAB, position, Quaternion.identity, this.transform);
                 stackList[spoke].Push(groundTile);
             }
         }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    [SerializeField]
+    private bool FollowRotation;
+
     private Player player;
     private Vector3 PlayerPos
     {
@@ -47,6 +50,6 @@ public class CameraFollow : MonoBehaviour
         Vector3 localPos = new Vector3(PlayerPosLocal.x, PlayerPosLocal.y - offset, PlayerPosLocal.z);
         Vector3 worldPos = player.transform.TransformPoint(localPos);
         transform.position = new Vector3(worldPos.x, worldPos.y, transform.position.z);
-        transform.rotation = PlayerRotation;
+        if(FollowRotation) transform.rotation = PlayerRotation;
     }
 }

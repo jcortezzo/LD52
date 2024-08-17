@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject planetGenerator;
 
+    [SerializeField]
+    private PlanetController planetController;
+
     private Rigidbody2D rb;
 
     private Animator animator;
@@ -36,7 +39,8 @@ public class Player : MonoBehaviour
 
     public Vector2 CoreToPlayer {
         get {
-            return (this.transform.position - planetGenerator.transform.position).normalized;
+            var planet = planetController.GetClosestPlanetToPlayer();
+            return (this.transform.position - planet.transform.position).normalized;
         }
     }
 

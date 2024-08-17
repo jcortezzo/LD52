@@ -148,17 +148,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &447837435 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 30236412634346827, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
-  m_PrefabInstance: {fileID: 30236412856793278}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447837427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2b7f9c44b5b45449c1c9b32f73a006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &553907959
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -468,7 +457,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &839458152
+--- !u!1001 &1528161083
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -485,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4817919393784804342, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.8
+      value: 30.6
       objectReference: {fileID: 0}
     - target: {fileID: 4817919393784804342, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -529,12 +518,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
---- !u!1 &1527947133 stripped
+--- !u!1 &1528161084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4817919393784804344, guid: 5c6f3de2a4a20dd4aa8db1852a23fa0e, type: 3}
-  m_PrefabInstance: {fileID: 839458152}
+  m_PrefabInstance: {fileID: 1528161083}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1783824513
+--- !u!1 &2052230960
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,8 +531,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1783824515}
-  - component: {fileID: 1783824514}
+  - component: {fileID: 2052230962}
+  - component: {fileID: 2052230961}
   m_Layer: 0
   m_Name: PlanetController
   m_TagString: Untagged
@@ -551,31 +540,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1783824514
+--- !u!114 &2052230961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783824513}
+  m_GameObject: {fileID: 2052230960}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8b2e93c8696c4a4496248ae14b3b9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   generators:
-  - {fileID: 1527947133}
   - {fileID: 536683156}
-  player: {fileID: 447837435}
---- !u!4 &1783824515
+  - {fileID: 1528161084}
+  player: {fileID: 30236412856793279}
+--- !u!4 &2052230962
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783824513}
+  m_GameObject: {fileID: 2052230960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.537028, y: 1.163922, z: -0.14475593}
+  m_LocalPosition: {x: 12.374155, y: 0.35623348, z: -0.16587631}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -684,22 +673,17 @@ PrefabInstance:
     - target: {fileID: 30236412634346827, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
       propertyPath: planetController
       value: 
-      objectReference: {fileID: 1783824514}
-    - target: {fileID: 3004495431502105454, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 3004495431502105454, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 3004495431502105454, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3004495431502105454, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2052230961}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
+--- !u!114 &30236412856793279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 30236412634346827, guid: abd4dd8576703ed4a8e491c23d984227, type: 3}
+  m_PrefabInstance: {fileID: 30236412856793278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447837427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2b7f9c44b5b45449c1c9b32f73a006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

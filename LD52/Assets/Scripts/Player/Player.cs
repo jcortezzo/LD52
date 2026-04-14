@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         float dir = Input.GetAxisRaw("Horizontal");
 
         // Keep original Y velocity
-        Vector2 currentVelocityWorldSpace = rb.velocity;
+        Vector2 currentVelocityWorldSpace = rb.linearVelocity;
         Vector2 currentVelocityLocalSpace = transform.InverseTransformDirection(currentVelocityWorldSpace);
 
         // Take suggested X velocity
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
 
         suggestedMovementLocalSpace = new Vector2(suggestedMovementLocalSpace.x, currentVelocityLocalSpace.y);
         Vector2 finalMovementWorldSpace = transform.TransformDirection(suggestedMovementLocalSpace);
-        rb.velocity = finalMovementWorldSpace;
+        rb.linearVelocity = finalMovementWorldSpace;
     }
 
     private void Jump()

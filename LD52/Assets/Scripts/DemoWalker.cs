@@ -44,6 +44,6 @@ public class DemoWalker : MonoBehaviour
 
         Vector2 movement = new Vector2(horizontal, vertical).normalized;
 
-        rb.velocity = movement * speed;
+        rb.linearVelocity = movement * speed;
     }
 }
